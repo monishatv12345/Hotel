@@ -1,0 +1,98 @@
+<div style="width: 100%;background-color: rgb(247, 176, 176);align-items: center;">
+    <form style="width: 30%;" (ngSubmit)="submitingHotel()" class="form-horizontal">
+      <div class="mb-3">
+        <label class="form-label">Hotel Id</label>
+        <input type="text" class="form-control" id="hotelId" [(ngModel)]="h.hotelId" name="hotelId" #hotelId="ngModel"
+          required pattern="[0-9][0-9][0-9]">
+        <div *ngIf="hotelId.invalid">
+          <span style="color: red;" *ngIf="hotelId.errors?.['required']">
+  
+            Hotel Id is required Field
+          </span>
+          <span style="color: red;" *ngIf="hotelId.errors?.['pattern']">
+            Hotel Id is not valid
+          </span>
+        </div>
+        <span style="color: rgb(4, 205, 51);" *ngIf="hotelId.valid">
+          Hotel Id is valid
+        </span>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Hotel Name</label>
+        <input type="text" class="form-control" [(ngModel)]="h.hotelName" id="hotelName" name="hotelName"
+          #hotelName="ngModel" required pattern="[0-9]*[a-zA-Z_]+[0-9]*">
+        <div *ngIf="hotelName.invalid">
+          <span style="color: red;" *ngIf="hotelName.errors?.['required']">
+  
+            Hotel Name is required Field
+          </span>
+          <span style="color: red;" *ngIf="hotelName.errors?.['pattern']">
+            Hotel Name is not valid
+          </span>
+        </div>
+        <span style="color: rgb(4, 205, 51);" *ngIf="hotelName.valid">
+          Hotel Name is valid
+        </span>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Hotel Owner</label>
+        <input type="text" class="form-control" [(ngModel)]="h.hotelOwner" id="hotelOwner"
+          name="hotelOwner">
+      </div>
+      <div class="form-group">
+        <div class="col-auto my-1">
+  
+          <label class="mr-sm-2" for="inlineFormCustomerSelect">Location</label>
+          <select class="custom-select mr-sm-2" [(ngModel)]="h.location" id="location" name="location" #location="ngModel"
+            required>
+            <option value=" " disabled selected>Select</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bengalore">Bengalore</option>
+            <option value="Chennai ">Chennai </option>
+          </select>
+          <div *ngIf="location.invalid">
+            <span style="color: red;" *ngIf="location.errors?.['required']">
+              Location is required Field
+            </span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label class="form-label">Category</label>
+        <input type="text" class="form-control" [(ngModel)]="h.category" id="category" name="category">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Ratings</label>
+        <input type="text" class="form-control" id="ratings" [(ngModel)]="h.ratings" name="ratings">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Discription</label>
+        <input type="text" class="form-control" [(ngModel)]="h.discription" id="discription" name="discription">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Contact Number</label>
+        <input type="text" class="form-control" [(ngModel)]="h.contactNumber" id="contnumber" name="contnumber"
+          pattern="^((\\+91-?)|0)?[0-9]{10}$" #hotelNum="ngModel" required>
+        <div *ngIf="hotelNum.invalid">
+          <span style="color: red;" *ngIf="hotelNum.errors?.['required']">
+  
+            Contact Number is required Field
+          </span>
+          <span style="color: red;" *ngIf="hotelNum.errors?.['pattern']">
+            Contact Number is not valid
+          </span>
+        </div>
+        <span style="color: rgb(4, 205, 51);" *ngIf="hotelNum.valid">
+          Contact Number is valid
+        </span>
+  
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Image Name</label>
+        <input type="text" class="form-control" [(ngModel)]="h.imageName" id="image" name="image">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
