@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Hotel } from '../hotel';
-import { HotelOperationsService } from '../hotel-operations-service';
+import { Room } from '../room';
+import { RoomOperationsService } from '../room-operations-service';
 import { ActivatedRoute,Route,Router } from '@angular/router';
 @Component({
   selector: 'app-user',
@@ -9,23 +9,23 @@ import { ActivatedRoute,Route,Router } from '@angular/router';
 })
 export class UserComponent {
 
-  __hotelService:HotelOperationsService;
+  __roomService:RoomOperationsService;
   router:Router;
 
-  allHotel:Array<Hotel>=[];
+  allRoom:Array<Room>=[];
  
 
 
-  constructor(hotelService:HotelOperationsService,router:Router){
-    this.__hotelService=hotelService;
-    this.allHotel=this.__hotelService.getHotelArr();
+  constructor(roomService:RoomOperationsService,router:Router){
+    this.__roomService=roomService;
+    this.allRoom=this.__roomService.getRoomArr();
     this.router=router;
   }
 
-  viewHotelDetails(hid:string)
+  viewRoomDetails(rid:string)
   {
     
-    this.router.navigate(['hotelDetails',hid]);
+    this.router.navigate(['roomDetails',rid]);
   }
   
 
@@ -33,15 +33,15 @@ export class UserComponent {
   {
     console.log(" Filter Value "+filterValue);
 
-    this.allHotel = this.__hotelService.getHotelById(filterValue);
+    this.allRoom = this.__roomService.getRoomById(filterValue);
   }
 
   getFilterMenu(filterValue:string){
-    this.allHotel=this.__hotelService.getHotelById(filterValue);
+    this.allRoom=this.__roomService.getRoomById(filterValue);
   }
 
   getFilterRatings(filterValue:string){
-    this.allHotel=this.__hotelService.getHotelByRatings(filterValue);
+    this.allRoom=this.__roomService.getRoomByRatings(filterValue);
 
   }
 }

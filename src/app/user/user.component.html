@@ -2,7 +2,7 @@
     <table>
         <tr>
             <td>
-                Hotel By
+                Room By
                 Location
 
                 <select #location (change)="getFilterData(location.value)">
@@ -15,19 +15,22 @@
             </td>
 
             <td>
-                | Hotel By
+                | Room By
                 Menu
 
                 <select #menu (change)="getFilterMenu(menu.value)">
                     <option value="" disabled selected>Select</option>
-                    <option>veg</option>
-                    <option>both</option>
-                    <option>non-veg</option>
+                    <option>AC Room</option>
+                    <option>Non-AC Room</option>
+                    <option>Deluxe Room</option>
+                    <option>Executive Room</option>
+                    <option>FamilySuites Room</option>
+                    <option>SuperDeluxe Room</option>
 
                 </select>
             </td>
             <td>
-                Hotel By
+                Room By
                 Good ratings at location
 
                 <select #rate (change)="getFilterRatings(rate.value)">
@@ -42,35 +45,35 @@
         </tr>
     </table>
 
-    <div *ngFor="let h of allHotel" style="background-color: rgb(247, 225, 225);">
+    <div *ngFor="let r of allRoom" style="background-color: rgb(247, 225, 225);">
         <table>
             <tr>
-                <td> <img src="/assets\images/{{h.imageName}}" alt=" Hotel image" width="150px" height="150px">
+                <td> <img src="/assets\images/{{r.imageName}}" alt=" Room image" width="150px" height="150px">
                 </td>
                 <td>
-                    <h2>{{h.hotelName}} </h2>
+                    <h2>{{r.hotelName}} </h2>
                     <hr />
-                    <p> {{h.hotelOwner}} </p>
-                    <div [ngSwitch]="h.category">
-                        <div *ngSwitchCase="'veg'" style="color: green;">Pure veg</div>
-                        <div *ngSwitchCase="'both'" style="color: rgb(182, 10, 10);">Veg & Non-veg</div>
-                        <div *ngSwitchCase="'non-veg'" style="color: rgb(182, 10, 10);">Non-veg</div>
+                    
+                    <div [ngSwitch]="r.category">
+                        <div *ngSwitchCase="'AC Room'" style="color: green;">AC Room</div>
+                    <div *ngSwitchCase="'Non-AC Room'" style="color: red;">Non-AC Room</div>
+                    <div *ngSwitchCase="'Deluxe Room'" style="color: red;">Deluxe Room</div>
+                    <div *ngSwitchCase="'Executive Room'" style="color: red;">Executive Room</div>
+                    <div *ngSwitchCase="'FamilySuites Room'" style="color: red;">FamilySuites Room</div>
+                    <div *ngSwitchCase="'SuperDeluxe Room'" style="color: red;">SuperDeluxe Room</div>
                     </div>
                     <br>
-                    Location: {{h.location}} <br />
-                    <p>Ratings:{{h.ratings}}</p>
-                    <div *ngIf="h.ratings >'4'" style="color: blue;">
+                    Location: {{r.location}} <br />
+                    <p>Ratings:{{r.ratings}}</p>
+                    <div *ngIf="r.ratings >'4'" style="color: blue;">
                         Recommended
                     </div>
-                    <p>Discription:{{h.discription|mydiscript:10}}</p>
-                    <br>
-                    Contact number: {{h.contactNumber}}
+                    
                     <hr />
-                    <button value="{{h.hotelId}}" (click)="viewHotelDetails(hotel.value)" #hotel>
+                    <button value="{{r.roomId}}" (click)="viewRoomDetails(room.value)" #room>
                         View Details</button>
                 </td>
             </tr>
             <hr>
         </table>
     </div>
-
